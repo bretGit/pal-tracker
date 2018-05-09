@@ -30,7 +30,6 @@ public class JdbcTimeEntryRepository implements TimeEntryRepository {
                             "VALUES (?, ?, ?, ?)",
                     RETURN_GENERATED_KEYS
             );
-
             statement.setLong(1, timeEntry.getProjectId());
             statement.setLong(2, timeEntry.getUserId());
             statement.setDate(3, Date.valueOf(timeEntry.getDate()));
@@ -44,7 +43,11 @@ public class JdbcTimeEntryRepository implements TimeEntryRepository {
 
     @Override
     public TimeEntry find(Long id) {
-        return jdbcTemplate.query("SELECT id, project_id, user_id, date, hours FROM time_entries WHERE id = ?", new Object[]{id}, extractor);
+        return jdbcTemplate.query(
+                "SELECT id, project_id, user_id, date, hours FROM time_entries WHERE id = ?",
+                new Object[]{id},
+                extractor);
+
     }
 
     @Override
