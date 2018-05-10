@@ -3,6 +3,7 @@ import org.flywaydb.gradle.task.FlywayMigrateTask
 plugins {
     id "java"
     id "org.springframework.boot" version "1.5.4.RELEASE"
+    id "org.flywaydb.flyway" version "4.2.0"
 }
 
 repositories {
